@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ElderCare Monitor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Connection Setup Screen -->
+    <div id="setup-screen" class="screen active">
+        <div class="container">
+            <h1>CareConnect</h1>
+            <p class="subtitle">Enter your loved one's phone number to sync with their home monitoring system and geolocation data.</p>
+            <div class="form-group">
+                <label for="parent-phone">Parent's Phone Number</label>
+                <input type="tel" id="parent-phone" placeholder="(555) 123-4567" autocomplete="tel">
+            </div>
+            <button id="connect-btn" class="primary-btn">Initialize Connection</button>
+            <p id="setup-error" class="error-text hidden">Please enter a valid number.</p>
+        </div>
+    </div>
+
+    <!-- Main Dashboard Screen -->
+    <div id="dashboard-screen" class="screen hidden">
+        <header class="app-header">
+            <h2>Dad's Dashboard</h2>
+            <div class="network-badge">
+                <span id="network-indicator" class="dot green"></span>
+                <span id="network-text">Connected</span>
+            </div>
+        </header>
+        
+        <main class="dashboard-container">
+            <!-- Movement & Location -->
+            <section class="card">
+                <h3>Location & Movement</h3>
+                <div class="data-row">
+                    <span>Current Room:</span>
+                    <strong id="room-status">Living Room</strong>
+                </div>
+                <div class="data-row">
+                    <span>Last Movement:</span>
+                    <strong>2 mins ago</strong>
+                </div>
+                <div class="geo-map-placeholder">
+                    <p>Live GPS Tracking Active</p>
+                    <span class="coords">Lat: 40.7128, Lon: -74.0060</span>
+                </div>
+            </section>
+
+            <!-- Daily Schedule & Meds -->
+            <section class="card">
+                <h3>Daily Schedule</h3>
+                <div class="data-row">
+                    <span>Waking Status:</span>
+                    <strong class="text-success">Awake (since 7:15 AM)</strong>
+                </div>
+                <div class="checkbox-wrapper">
+                    <input type="checkbox" id="med-status" checked disabled>
+                    <label for="med-status">Morning Medications Taken</label>
+                </div>
+            </section>
+
+            <!-- Bi-Directional Audio -->
+            <section class="card audio-section">
+                <h3>Intercom System</h3>
+                <p class="sub-text">Low-latency bi-directional audio stream over WebRTC.</p>
+                <div class="audio-controls">
+                    <button id="listen-btn" class="audio-btn">
+                        <span class="icon">🔊</span> Listen In
+                    </button>
+                    <button id="talk-btn" class="audio-btn ptt">
+                        <span class="icon">🎙️</span> Hold to Talk
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
